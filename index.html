@@ -5,11 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>الفيزياء والكيمياء — Nourix</title>
 <link rel="stylesheet" href="styles.css">
+<script>
+try{
+  var savedTheme=localStorage.getItem('nourix-theme');
+  if(savedTheme==='light')document.documentElement.setAttribute('data-theme','light');
+  else document.documentElement.removeAttribute('data-theme');
+}catch(e){}
+</script>
 </head>
 <body>
 <header class="topbar">
   <div class="wrap topbar-row">
     <div class="brand">الفيزياء والكيمياء<small>نسخة تجريبية — Nourix</small></div>
+    <button class="theme-btn" id="themeToggle" type="button" aria-label="تبديل الوضع الليلي" aria-pressed="false"><span class="theme-ico" aria-hidden="true">🌙</span><span class="theme-lbl">الوضع الليلي</span></button>
     <nav class="lang-switch" id="langSwitch" aria-label="اللغة">
       <button data-l="darija">دارجة</button><button data-l="ar">عربية</button><button data-l="fr">FR</button><button data-l="en">EN</button>
     </nav>
@@ -19,10 +27,44 @@
 
 .lang-switch{display:flex;gap:6px;margin-inline-start:auto}
 .lang-switch button{border:1px solid var(--border);border-radius:999px;padding:8px 10px;font-weight:700;font-size:.78rem;cursor:pointer;color:var(--muted);font-family:inherit;min-height:40px}
+html.theme-transition *,html.theme-transition *::before,html.theme-transition *::after{transition:background-color .25s ease,color .25s ease,border-color .25s ease,box-shadow .25s ease}
+@media (prefers-reduced-motion: reduce){html.theme-transition *,html.theme-transition *::before,html.theme-transition *::after{transition:none !important}}
 
 </style>
 <script>
-(function(){var nav=document.getElementById('langSwitch');var map={darija:'index.html',ar:'index-ar.html',fr:'index-fr.html',en:'index-en.html'};var m=location.pathname.match(/index(-ar|-fr|-en)?\.html$/);var cur=m?(m[1]?m[1].slice(1):'darija'):'darija';nav.querySelectorAll('button').forEach(function(b){var l=b.getAttribute('data-l');if(l===cur)b.classList.add('active');b.addEventListener('click',function(){try{localStorage.setItem('edtech-lang',l);}catch(e){}if(l!==cur)location.href=map[l];});});})();
+(function(){
+  var nav=document.getElementById('langSwitch');
+  var map={darija:'index.html',ar:'index-ar.html',fr:'index-fr.html',en:'index-en.html'};
+  var m=location.pathname.match(/index(-ar|-fr|-en)?\.html$/);
+  var cur=m?(m[1]?m[1].slice(1):'darija'):'darija';
+  nav.querySelectorAll('button').forEach(function(b){
+    var l=b.getAttribute('data-l');
+    if(l===cur)b.classList.add('active');
+    b.addEventListener('click',function(){
+      try{localStorage.setItem('edtech-lang',l);}catch(e){}
+      if(l!==cur)location.href=map[l];
+    });
+  });
+
+  var root=document.documentElement;
+  var btn=document.getElementById('themeToggle');
+  function setTheme(theme){
+    var isLight=theme==='light';
+    if(isLight)root.setAttribute('data-theme','light');
+    else root.removeAttribute('data-theme');
+    btn.setAttribute('aria-pressed',String(isLight));
+    btn.querySelector('.theme-ico').textContent=isLight?'☀️':'🌙';
+    btn.querySelector('.theme-lbl').textContent=isLight?'الوضع النهاري':'الوضع الليلي';
+  }
+  setTheme(root.getAttribute('data-theme')==='light'?'light':'dark');
+  btn.addEventListener('click',function(){
+    var next=root.getAttribute('data-theme')==='light'?'dark':'light';
+    root.classList.add('theme-transition');
+    setTheme(next);
+    try{localStorage.setItem('nourix-theme',next);}catch(e){}
+    setTimeout(function(){root.classList.remove('theme-transition');},260);
+  });
+})();
 </script>
 
 <main class="wrap">
