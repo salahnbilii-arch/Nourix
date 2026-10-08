@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>الفيزياء والكيمياء — Nourix</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar-row">
+    <div class="brand">الفيزياء والكيمياء<small>نسخة تجريبية — Nourix</small></div>
+    <nav class="lang-switch" id="langSwitch" aria-label="اللغة">
+      <button data-l="darija">دارجة</button><button data-l="ar">عربية</button><button data-l="fr">FR</button><button data-l="en">EN</button>
+    </nav>
+  </div>
+</header>
+<style>
+
+.lang-switch{display:flex;gap:6px;margin-inline-start:auto}
+.lang-switch button{border:1px solid var(--border);border-radius:999px;padding:8px 10px;font-weight:700;font-size:.78rem;cursor:pointer;color:var(--muted);font-family:inherit;min-height:40px}
+
+</style>
+<script>
+(function(){var nav=document.getElementById('langSwitch');var map={darija:'index.html',ar:'index-ar.html',fr:'index-fr.html',en:'index-en.html'};var m=location.pathname.match(/index(-ar|-fr|-en)?\.html$/);var cur=m?(m[1]?m[1].slice(1):'darija'):'darija';nav.querySelectorAll('button').forEach(function(b){var l=b.getAttribute('data-l');if(l===cur)b.classList.add('active');b.addEventListener('click',function(){try{localStorage.setItem('edtech-lang',l);}catch(e){}if(l!==cur)location.href=map[l];});});})();
+</script>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="badge">4 لغات: دارجة 🇲🇦 عربية FR EN</span>
+    <h1>الفيزياء والكيمياء بلا تعقيد</h1>
+    <p>دروس مشروحة ببساطة، مختبرات تفاعلية تجربها بنفسك، وكويزات تصحح لك فالبلاصة. اختار لغتك من فوق — المصطلحات العلمية بالفرنسية محفوظة حيث الامتحان بالفرنسية.</p>
+  </section>
+
+  <section id="g-dash">
+    <div class="g-countdown"><span id="g-countdown">⏰ …</span><span class="g-countdown-note" id="g-countdown-note"></span></div>
+    <h2 class="section-title" id="g-journey-title">🏆 رحلتي</h2>
+    <div class="g-grid">
+      <div class="g-card"><div class="g-num" id="g-xp">0</div><div class="g-lbl">XP</div><div class="xpbar"><i id="g-xpfill"></i></div><div class="g-sub" id="g-level"></div></div>
+      <div class="g-card"><div class="g-num" id="g-streak">0</div><div class="g-lbl">🔥 أيام متتالية</div></div>
+      <div class="g-card"><div class="g-num" id="g-prog">0/23</div><div class="g-lbl">📚 الفصول</div><div class="xpbar"><i id="g-progfill"></i></div></div>
+    </div>
+    <div class="g-card tall" id="g-challenge"></div>
+    <div class="g-card tall" id="g-planner"></div>
+    <div class="g-card tall" id="g-leader"></div>
+    <button class="btn" id="g-parent" type="button">👨‍👩‍👧 تقرير الأهل</button>
+  </section>
+  <div id="g-modal" role="dialog" aria-modal="true"></div>
+  <div id="g-toast" role="status"></div>
+  <script src="gamify.js"></script>
+
+
+  <section>
+    <h2 class="section-title">🤖 المساعد الذكي — <span class="fr">Assistant IA</span></h2>
+    <div class="grid">
+      <a class="card" href="solver.html">
+        <span class="tag">جديد — ذكاء اصطناعي</span>
+        <h2>🤖 حل التمارين بالذكاء الاصطناعي</h2>
+        <p>صوّر أي تمرين ولا كتبو — الذكاء الاصطناعي كيحلو ليك خطوة بخطوة بالدارجة، متخصص فكل فصل</p>
+        <span class="go">جرّب المساعد ←</span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">📝 الفروض — <span class="fr">Devoirs surveillés</span></h2>
+    <div class="grid">
+      <a class="card" href="examen1.html">
+        <span class="tag">فرض 1 — بأسلوب الباك</span>
+        <h2>الفرض الأول</h2>
+        <p>الموجات، النشاط الإشعاعي، RC، الكيمياء — ⏱️ ساعتين، 🔀 أسئلة مخلوطة، 🔒 منع الغش + تصحيح مفصل</p>
+        <span class="go">ابدأ الفرض ←</span>
+      </a>
+      <a class="card" href="examen2.html">
+        <span class="tag">فرض 2 — بأسلوب الباك</span>
+        <h2>الفرض الثاني</h2>
+        <p>الضوء، النوى، RL/RLC، التوازن والمعايرة — ⏱️ ساعتين، 🔀 أسئلة مخلوطة، 🔒 منع الغش + تصحيح مفصل</p>
+        <span class="go">ابدأ الفرض ←</span>
+      </a>
+      <a class="card" href="examen3.html">
+        <span class="tag">فرض 3 — بأسلوب الباك</span>
+        <h2>الفرض الثالث</h2>
+        <p>الحركة، الأقمار، الدوران، الأعمدة — ⏱️ ساعتين، 🔀 أسئلة مخلوطة، 🔒 منع الغش + تصحيح مفصل</p>
+        <span class="go">ابدأ الفرض ←</span>
+      </a>
+      <a class="card" href="examens-officiels.html">
+        <span class="tag">رسمي — من الوزارة</span>
+        <h2>📋 الامتحانات الوطنية الرسمية</h2>
+        <p>مواضيع البكالوريا الرسمية + التصحيح الرسمي — تقراهم داخل الموقع</p>
+        <span class="go">شوف الامتحانات ←</span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">الفيزياء — <span class="fr">Physique</span></h2>
+    <div class="grid">
+      <a class="card" href="chapitre1.html">
+        <span class="tag">الفصل 1 — متاح دابا</span>
+        <h2>الموجات الميكانيكية المتقدمة</h2>
+        <p><span class="fr">Les ondes mécaniques progressives</span> — التعريف، السرعة، الدورية الزمنية والمكانية، الموجة الجيبية + محاكاة + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+      <a class="card" href="chapitre2.html">
+        <span class="tag">الفصل 2 — متاح دابا</span>
+        <h2>الموجات الضوئية</h2>
+        <p><span class="fr">Les ondes lumineuses</span> — الحيود، التشتت + محاكاة + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+      <a class="card" href="chapitre3.html">
+        <span class="tag">الفصل 3 — متاح دابا</span>
+        <h2>التناقص الإشعاعي</h2>
+        <p><span class="fr">La décroissance radioactive</span> — قانون التناقص، عمر النصف، النشاط + محاكاة + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+      <a class="card" href="chapitre4.html">
+        <span class="tag">الفصل 4 — متاح دابا</span>
+        <h2>النوى، الكتلة والطاقة</h2>
+        <p><span class="fr">Noyaux, masse et énergie</span> — E=mc²، طاقة الربط، الانشطار والاندماج + محاكاة + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+      <a class="card" href="chapitre5.html">
+        <span class="tag">الفصل 5 — متاح دابا</span>
+        <h2>ثنائي القطب RC</h2>
+        <p><span class="fr">Le dipôle RC</span> — الشحن والتفريغ، ثابت الزمن + محاكاة + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+      <a class="card" href="chapitre6.html">
+        <span class="tag">الفصل 6 — متاح دابا</span>
+        <h2>ثنائي القطب RL</h2>
+        <p><span class="fr">Le dipôle RL</span> — قيام التيار، ثابت الزمن + محاكاة + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+      <a class="card" href="chapitre7.html">
+        <span class="tag">الفصل 7 — متاح دابا</span>
+        <h2>الاهتزازات الحرة RLC</h2>
+        <p><span class="fr">Oscillations libres RLC</span> — الأنظمة، الطاقة + محاكاة + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+      <a class="card" href="chapitre20.html">
+        <span class="tag">الفصل 20 — متاح دابا</span>
+        <h2>الموجات الكهرومغناطيسية</h2>
+        <p><span class="fr">Les ondes électromagnétiques</span> — الطيف، نقل المعلومات + محاكاة + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+      <a class="card" href="chapitre21.html">
+        <span class="tag">الفصل 21 — متاح دابا</span>
+        <h2>تضمين السعة</h2>
+        <p><span class="fr">Modulation d'amplitude</span> — الإشارة المعدلة، الجودة + محاكاة + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+      <a class="card" href="chapitre22.html">
+        <span class="tag">الفصل 22 — متاح دابا</span>
+        <h2>قوانين نيوتن</h2>
+        <p><span class="fr">Les lois de Newton</span> — القوانين الثلاثة + محاكاة + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+      <a class="card" href="chapitre23.html">
+        <span class="tag">الفصل 23 — متاح دابا</span>
+        <h2>السقوط الرأسي</h2>
+        <p><span class="fr">Chute verticale</span> — السقوط الحر، الاحتكاك + محاكاة + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+      <a class="card" href="chapitre8.html">
+        <span class="tag">الفصل 8 — متاح دابا</span>
+        <h2>الحركات المستوية</h2>
+        <p><span class="fr">Les mouvements plans</span> — المقذوفات: المعادلات، المدى + محاكاة + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+      <a class="card" href="chapitre9.html">
+        <span class="tag">الفصل 9 — متاح دابا</span>
+        <h2>حركات الأقمار والكواكب</h2>
+        <p><span class="fr">Satellites et planètes</span> — الجاذبية، قوانين كبلر + محاكاة + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+      <a class="card" href="chapitre10.html">
+        <span class="tag">الفصل 10 — متاح دابا</span>
+        <h2>دوران جسم صلب</h2>
+        <p><span class="fr">Rotation d'un solide</span> — عزم القصور، مبرهنة العزم + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+      <a class="card" href="chapitre11.html">
+        <span class="tag">الفصل 11 — متاح دابا</span>
+        <h2>الأنظمة الميكانيكية المتذبذبة</h2>
+        <p><span class="fr">Systèmes oscillants</span> — النواس المرن، الطاقة + محاكاة + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">الكيمياء — <span class="fr">Chimie</span></h2>
+    <div class="grid">
+      <a class="card" href="chapitre12.html">
+        <span class="tag">الفصل 12 — متاح دابا</span>
+        <h2>التحولات البطيئة والسريعة</h2>
+        <p><span class="fr">Transformations lentes et rapides</span> — العوامل الحركية + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+      <a class="card" href="chapitre13.html">
+        <span class="tag">الفصل 13 — متاح دابا</span>
+        <h2>التتبع الزمني لتحول كيميائي</h2>
+        <p><span class="fr">Suivi temporel</span> — السرعة الحجمية + محاكاة + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+      <a class="card" href="chapitre14.html">
+        <span class="tag">الفصل 14 — متاح دابا</span>
+        <h2>التحولات في الاتجاهين</h2>
+        <p><span class="fr">Deux sens d'évolution</span> — اتجاه التطور التلقائي + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+      <a class="card" href="chapitre15.html">
+        <span class="tag">الفصل 15 — متاح دابا</span>
+        <h2>حالة التوازن</h2>
+        <p><span class="fr">État d'équilibre</span> — خارج التفاعل Q، ثابت التوازن K + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+      <a class="card" href="chapitre16.html">
+        <span class="tag">الفصل 16 — متاح دابا</span>
+        <h2>تفاعلات حمض-قاعدة</h2>
+        <p><span class="fr">Réactions acido-basiques</span> — pH، Ka، السيطرة + محاكاة + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+      <a class="card" href="chapitre17.html">
+        <span class="tag">الفصل 17 — متاح دابا</span>
+        <h2>المعايرات</h2>
+        <p><span class="fr">Dosages acido-basiques</span> — التكافؤ، المنحنى + محاكاة + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+      <a class="card" href="chapitre18.html">
+        <span class="tag">الفصل 18 — متاح دابا</span>
+        <h2>الأعمدة الكهروكيميائية</h2>
+        <p><span class="fr">Piles électrochimiques</span> — التركيب، القوة الدافعة + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+      <a class="card" href="chapitre19.html">
+        <span class="tag">الفصل 19 — متاح دابا</span>
+        <h2>التحليل الكهربائي</h2>
+        <p><span class="fr">L'électrolyse</span> — التفاعلات عند الإلكترودات + كويز</p>
+        <span class="go">ابدأ الدرس ←</span>
+      </a>
+    </div>
+  </section>
+
+  <footer class="site">صُنع للتجربة — المحتوى قيد المراجعة من طرف أستاذ</footer>
+</main>
+</body>
+</html>
