@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>الفصل 1: الموجات الميكانيكية المتقدمة</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.topbar .wrap{flex-wrap:wrap}
+.lang-switch{display:flex;gap:6px;margin-inline-start:auto}
+.lang-switch button{border:1px solid var(--border);border-radius:999px;padding:8px 10px;font-weight:700;font-size:.78rem;cursor:pointer;color:var(--muted);font-family:inherit;min-height:40px}
+
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="back" href="index.html">→ الرئيسية</a>
+    <div class="brand">الفصل 1<small><span class="fr">Les ondes mécaniques progressives</span></small></div>
+    <nav class="lang-switch" id="langSwitch">
+      <button data-l="darija">دارجة</button>
+      <button data-l="ar">عربية</button>
+      <button data-l="fr">FR</button>
+      <button data-l="en">EN</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap lesson">
+  <section class="hero">
+    <span class="badge">الفصل 1 — <span class="fr">Les ondes mécaniques progressives</span></span>
+    <h1>شنو هي الموجة؟ وكيفاش كتمشي بلا ما تمشي المادة؟</h1>
+    <p>ملي كتلوح حجرة فبركة ديال الماء، كتشوف دوائر كتكبر وكتبعد على البلاصة فين طاحت الحجرة. السؤال المهم: <strong>واش الماء نفسو مشى مع الدوائر؟</strong> لا. كل نقطة ديال الماء غير طلعات وهبطات فبلاصتها. اللي سافر هو <strong>الاضطراب</strong> — والطاقة. هادي هي الفكرة ديال هاد الفصل كامل.</p>
+  </section>
+
+  <div style="text-align:center;margin:24px 0"><a class="btn" href="solver.html" style="font-size:1.1rem;padding:14px 28px">🤖 ما فهمتي شي تمرين؟ المساعد الذكي يحلو ليك</a></div>
+<h2 class="sec">💡 الفكرة ببساطة</h2>
+  <p>جرّب هاد التجربة فمخك: صف ديال الناس واقفين. الأول كيدفع اللي حداه، هذاك كيدفع اللي حداه… حتى كتوصل الدفعة لآخر الصف. واش الناس تبدلو بلايصهم؟ لا — كل واحد غير تمايل ورجع لبلاصتو. اللي مشى هو <strong>"الدفعة"</strong>.</p>
+  <p>الموجة هي نفس الشي: <strong>اضطراب كينتقل من نقطة لنقطة، والمادة كتبقى فبلاصتها.</strong> ملي غادي تفهم هاد الجملة، الفصل كامل غادي يبان ليك ساهل.</p>
+
+  <h2 class="sec">1. التعريف <span class="fr">(Définition)</span></h2>
+  <p><strong>الموجة الميكانيكية المتقدمة</strong> <span class="fr">(onde mécanique progressive)</span> هي <strong>انتشار اضطراب <span class="fr">(perturbation)</span> فوسط مادي</strong>، <strong>بلا ما تنتقل المادة</strong>.</p>
+  <p>كلمة "ميكانيكية" = كتحتاج <strong>مادة</strong> تهتز: ماء، هواء، حبل… وكلمة "متقدمة" = الاضطراب <strong>كيتقدم</strong> وكيمشي لبلايص جداد.</p>
+  <div class="warn">⚠️ <strong>شرط ضروري:</strong> خاص <strong>وسط مادي مرن</strong> <span class="fr">(milieu matériel élastique)</span>. بلا مادة ما كاين والو يهتز ← الموجة الميكانيكية <strong>ما كتنتشرش فالفراغ</strong> <span class="fr">(vide)</span>. (الضوء حالة أخرى: موجة كهرمغناطيسية <span class="fr">(onde électromagnétique)</span> كتمشي حتى فالفراغ — غادي نشوفوها فالفصل 2.)</div>
+
+  <h2 class="sec">2. مستعرضة ولا طولية؟ <span class="fr">(Transversale ou longitudinale ?)</span></h2>
+  <p>سول راسك سؤال واحد: <strong>الاهتزاز فنفس اتجاه المشي، ولا عمودي عليه؟</strong></p>
+  <p>🔹 <strong>مستعرضة</strong> <span class="fr">(onde transversale)</span>: الاهتزاز <strong>عمودي</strong> على اتجاه الانتشار.<br>مثال: <strong>حبل</strong> <span class="fr">(corde)</span> كتهزو الفوق والتحت، والموجة غادية على طول الحبل.</p>
+  <p>🔹 <strong>طولية</strong> <span class="fr">(onde longitudinale)</span>: الاهتزاز <strong>فنفس اتجاه</strong> الانتشار.<br>مثال: <strong>زنبرك</strong> <span class="fr">(ressort)</span> كتضغطو وكتطلقو. ومثال مهم بزاف: <strong>الصوت</strong> <span class="fr">(son)</span> موجة طولية كتنتشر فالهواء.</p>
+
+  <h2 class="sec">3. سرعة الانتشار والتأخر الزمني <span class="fr">(Célérité et retard)</span></h2>
+  <p><strong>سرعة الانتشار</strong> <span class="fr">(célérité)</span> وكنرمزولها بـ <span class="fr">v</span>: هي شحال كتقطع الموجة من مسافة فمدة معينة.</p>
+  <span class="formula" dir="ltr">v = d / Δt</span>
+  <p>دابا تخيل <strong>منبع</strong> <span class="fr">S</span> كيهتز، و<strong>نقطة</strong> <span class="fr">M</span> بعيدة عليه بمسافة <span class="fr">x</span>. النقطة <span class="fr">M</span> غادي تدير <strong>نفس</strong> الحركة ديال <span class="fr">S</span>… ولكن <strong>معطلة شوية</strong>. هاد التعطال كنسميوه <strong>التأخر الزمني</strong> <span class="fr">(retard)</span> وكنرمزولو بـ <span class="fr">τ</span>:</p>
+  <span class="formula" dir="ltr">τ = x / v<small>et : y<sub>M</sub>(t) = y<sub>S</sub>(t − τ)</small></span>
+  <p>مثال: <span class="fr">v = 2 m/s</span> و <span class="fr">x = 6 m</span> ← <span class="fr">τ = 3 s</span>. يعني <span class="fr">M</span> كتعاود بعد <strong>3 ثواني</strong> شنو دار <span class="fr">S</span>. بحال الصدى: كتسمع صوتك معطل.</p>
+
+  <h2 class="sec">4. الدورية الزمنية والمكانية <span class="fr">(Périodicités temporelle et spatiale)</span></h2>
+  <p>ملي المنبع كيهتز بانتظام، الموجة كتتعاود <strong>فالزمن</strong> و<strong>فالمكان</strong> بجوج — كنسميوها <strong>الدورية المزدوجة</strong> <span class="fr">(double périodicité)</span>.</p>
+  <p>⏱️ <strong>فالزمن:</strong> كل نقطة كتعاود نفس الحركة كل مدة <span class="fr">T</span> (الدور <span class="fr">(période)</span>). و<strong>التردد</strong> <span class="fr">(fréquence)</span> هو عدد الاهتزازات فالثانية:</p>
+  <span class="formula" dir="ltr">f = 1 / T<small>f en hertz (Hz), T en secondes (s)</small></span>
+  <p>📏 <strong>فالمكان:</strong> <strong>طول الموجة</strong> <span class="fr">(longueur d'onde)</span> وكنرمزولو بـ <span class="fr">λ</span>: هو <strong>المسافة بين جوج قمم متتالية</strong> — ولا بصيغة الامتحان: أصغر مسافة بين جوج نقط على نفس الطور <span class="fr">(en phase)</span>.</p>
+  <p>والعلاقة اللي كتجمعهم هي <strong>أهم علاقة فالفصل</strong>:</p>
+  <span class="formula" dir="ltr">λ = v · T = v / f</span>
+  <p>المنطق ساهل: فمدة دور واحد <span class="fr">T</span>، الموجة كتقطع مسافة هي نيت طول الموجة <span class="fr">λ</span>.</p>
+
+  <h2 class="sec">5. الموجة الجيبية المتقدمة <span class="fr">(Onde progressive sinusoïdale)</span></h2>
+  <p>إلا كان المنبع كيهتز بحركة <strong>جيبية</strong> <span class="fr">(sinusoïdale)</span> (بحال حركة منتظمة رايحة جاية)، الموجة الناتجة كتكون جيبية:</p>
+  <span class="formula" dir="ltr">y(x,t) = A · sin(2π(t/T − x/λ) + φ)<small>A : amplitude</small></span>
+  <p>قراها هكا: <span class="fr">t/T</span> = الدورية الزمنية، و<span class="fr">x/λ</span> = الدورية المكانية. بجوج فمعادلة وحدة = الدورية المزدوجة.</p>
+
+  <div class="toolbox">
+    <h3>📦 صندوق القوانين <span class="fr">(Boîte à outils)</span></h3>
+    <ul>
+      <li><span class="formula" dir="ltr">v = d / Δt</span></li>
+      <li><span class="formula" dir="ltr">τ = x / v &nbsp;;&nbsp; y<sub>M</sub>(t) = y<sub>S</sub>(t − τ)</span></li>
+      <li><span class="formula" dir="ltr">f = 1 / T</span></li>
+      <li><span class="formula" dir="ltr">λ = v · T = v / f</span></li>
+      <li><span class="formula" dir="ltr">y(x,t) = A·sin(2π(t/T − x/λ) + φ)</span></li>
+    </ul>
+  </div>
+
+  <h2 class="sec">🔬 المختبر الافتراضي</h2>
+  <p>هادا حوض ديال الماء من الفوق. <strong>طُق فأي بلاصة</strong> وشوف الدوائر كتكبر وكتبعد — وجرّب <strong>المنبع المستمر</strong>: غادي يولّي دوائر منتظمة. بدّل التردد والسرعة، ولاحظ شكون كيتبدل فـ <span class="fr">λ</span>.</p>
+  <div class="sim-box">
+    <canvas id="wave" style="height:300px"></canvas>
+    <div class="controls">
+      <button class="btn" id="srcBtn" type="button"></button>
+      <div class="ctl">
+        <label><span id="lblFreq"></span> <output id="freqOut" dir="ltr"></output></label>
+        <input type="range" id="freq" min="0.2" max="2" value="1" step="0.1" aria-label="التردد">
+      </div>
+      <div class="ctl">
+        <label><span id="lblSpeed"></span> <output id="speedOut" dir="ltr"></output></label>
+        <input type="range" id="speed" min="1" max="10" value="4" step="0.5" aria-label="سرعة الموجة">
+      </div>
+    </div>
+    <p class="sim-note" id="lambdaRead"></p>
+    <p class="sim-note" id="rulerRead"></p>
+    <p class="sim-note" id="tapHint"></p>
+  </div>
+
+  <style>
+
+.video-card{margin:0;border:1px solid var(--border,#e5e7eb);border-radius:14px;overflow:hidden;}
+.video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#000}
+.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+.video-card figcaption{padding:10px 14px;font-size:.88rem;color:var(--muted)}
+.vlang{display:inline-block;border-radius:999px;padding:2px 10px;font-size:.75rem;font-weight:700;color:var(--accent,#4f46e5)}
+.videos-note{color:var(--muted);font-size:.92rem}
+</style>
+<section class="videos" id="videos">
+  <h2 class="sec">🎥 شرح بالفيديو</h2>
+  <p class="videos-note">شروحات حقيقية ديال أساتذة مغاربة كيشرحو نفس هاد الفصل — تفرّج عاد دوز للاختبار.</p>
+  <div class="video-grid">
+    <figure class="video-card">
+      <div class="video-wrap"><iframe src="https://www.youtube-nocookie.com/embed/MA-4Sl6ipAo" title="Essakhi_physique — 🎥 شرح بالفيديو" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+      <figcaption>👨‍🏫 Essakhi_physique <span class="vlang">بالفرنسية</span></figcaption>
+    </figure>
+    <figure class="video-card">
+      <div class="video-wrap"><iframe src="https://www.youtube-nocookie.com/embed/cjn_6NlbPVk" title="L. Soufiane — 🎥 شرح بالفيديو" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+      <figcaption>👨‍🏫 L. Soufiane <span class="vlang">بالفرنسية</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<h2 class="sec">✅ اختبر راسك <span class="fr">(QCM)</span></h2>
+  <div class="quiz-head">
+    <span>8 أسئلة — التصحيح فوري بالدارجة</span>
+    <span class="score" id="score">النقاط: 0/8</span>
+  </div>
+  <div id="quiz"></div>
+  <div class="result" id="result">
+    <div class="big" id="resultScore"></div>
+    <p id="resultMsg"></p>
+    <button class="btn ghost" id="retryBtn">🔄 عاود المحاولة</button>
+  </div>
+
+  <h2 class="sec">🤖 المساعد الذكي <span class="offline-badge">📴 يعمل بلا إنترنت</span></h2>
+  <div id="exercises"></div>
+
+  <footer class="site">الفصل 1 — المحتوى قيد المراجعة من طرف أستاذ</footer>
+</main>
+
+<script>
+(function(){var m=location.pathname.match(/(chapitre\d+?)(?:-(fr|ar|en))?\.html$/);if(!m)return;var base=m[1],cur=m[2]||'darija';var map={darija:'',fr:'-fr',ar:'-ar',en:'-en'};var nav=document.getElementById('langSwitch');nav.querySelectorAll('button').forEach(function(b){var l=b.getAttribute('data-l');if(l===cur)b.classList.add('active');b.addEventListener('click',function(){try{localStorage.setItem('edtech-lang',l);}catch(e){}location.href=base+map[l]+'.html';});});var s=null;try{s=localStorage.getItem('edtech-lang');}catch(e){}if(s&&s!==cur&&map[s]!==undefined){location.href=base+map[s]+'.html';}})();
+</script>
+<script src="three.min.js"></script>
+<script src="sim1.js"></script>
+<script src="quiz1.js"></script>
+<script src="exbank1.js"></script>
+  <div id="g-toast" role="status"></div>
+  <script src="gamify.js"></script>
+</body>
+</html>
