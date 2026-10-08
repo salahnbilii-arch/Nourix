@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>قالب الدرس — Nourix</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .lesson-shell { padding-top: 14px; }
+    .lesson-head { margin-bottom: 14px; }
+    .lesson-head h1 { margin: 6px 0 4px; font-size: 1.45rem; line-height: 1.35; color: var(--ink-strong); }
+    .lesson-head p { margin: 0; color: var(--muted); font-size: .95rem; }
+    .nouri-chip {
+      display: inline-flex; align-items: center; gap: 8px; margin-bottom: 8px;
+      padding: 7px 12px; border-radius: 999px; border: 1px solid var(--border);
+      background: var(--panel-2); color: var(--ink-strong); font-size: .84rem; font-weight: 700;
+    }
+
+    .tabs {
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px;
+      margin: 14px 0;
+    }
+    .tab-btn {
+      appearance: none; border: 1px solid var(--border); border-radius: 10px;
+      background: var(--panel); color: var(--muted); min-height: 44px;
+      font-family: inherit; font-weight: 700; font-size: .86rem; cursor: pointer;
+      transition: border-color .2s ease, color .2s ease, background .2s ease, transform .2s ease;
+    }
+    .tab-btn:hover { color: var(--ink); border-color: var(--faint); }
+    .tab-btn[aria-selected="true"] {
+      color: var(--ink-strong); background: var(--accent-soft); border-color: var(--accent);
+      box-shadow: 0 0 18px rgba(var(--accent-rgb), .22);
+    }
+
+    .tab-panel {
+      display: none; background: var(--panel); border: 1px solid var(--border);
+      border-radius: 14px; padding: 14px; animation: tabFade .25s ease;
+    }
+    .tab-panel.active { display: block; }
+    .placeholder {
+      margin: 12px 0; border: 1px dashed rgba(var(--accent-rgb), .45); border-radius: 12px;
+      background: var(--panel-2); padding: 12px;
+    }
+    .placeholder h3 { margin: 0 0 4px; font-size: .98rem; color: var(--ink-strong); }
+    .placeholder p { margin: 0; color: var(--muted); font-size: .91rem; }
+
+    .quiz-q { margin: 0 0 14px; padding: 12px; border-radius: 12px; background: var(--panel-2); border: 1px solid var(--border); }
+    .quiz-q legend { font-weight: 700; color: var(--ink-strong); margin-bottom: 10px; }
+    .quiz-q label { display: block; margin: 6px 0; color: var(--ink); }
+    .quiz-q input { margin-inline-end: 8px; accent-color: var(--accent); }
+    #quizResult { margin-top: 10px; font-weight: 700; color: var(--accent); }
+
+    .lab-embed {
+      margin-top: 8px; border-radius: 12px; border: 1px dashed var(--border);
+      background: var(--well); min-height: 180px; display: grid; place-items: center; color: var(--muted);
+      font-family: var(--mono);
+    }
+
+    .note-tools { display: flex; gap: 10px; align-items: center; margin: 10px 0 0; flex-wrap: wrap; }
+    #notesArea {
+      width: 100%; min-height: 180px; resize: vertical; border-radius: 12px;
+      border: 1px solid var(--border); background: var(--panel-2); color: var(--ink);
+      padding: 12px; font-family: inherit; line-height: 1.8;
+    }
+    .hint { color: var(--muted); font-size: .86rem; }
+
+    .comment-form { display: grid; gap: 10px; }
+    #commentInput {
+      width: 100%; min-height: 90px; resize: vertical; border-radius: 12px;
+      border: 1px solid var(--border); background: var(--panel-2); color: var(--ink);
+      padding: 10px; font-family: inherit;
+    }
+    .comment-list { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 10px; }
+    .comment-item {
+      border: 1px solid var(--border); border-radius: 12px; background: var(--panel-2); padding: 10px;
+      display: grid; gap: 8px;
+    }
+    .comment-meta { font-size: .8rem; color: var(--muted); }
+
+    @keyframes tabFade {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (min-width: 760px) {
+      .tabs { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+      .lesson-head h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-row">
+      <a class="back" href="index.html">→ الرئيسية</a>
+      <div class="brand">Nourix<small>قالب صفحة الدرس — 2ème Bac SP</small></div>
+    </div>
+  </header>
+
+  <main class="wrap lesson-shell">
+    <section class="lesson-head">
+      <span class="nouri-chip">🦦 نوري | Nouri</span>
+      <h1>قالب موحد لصفحة الدرس</h1>
+      <p>هذا قالب قابل لإعادة الاستخدام. عوّض الأقسام التعليمية بالمحتوى الفعلي لكل فصل.</p>
+    </section>
+
+    <nav class="tabs" role="tablist" aria-label="تبويبات الدرس">
+      <button class="tab-btn" role="tab" aria-selected="true" aria-controls="tab-cours" id="btn-cours">Cours</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-quiz" id="btn-quiz">Quiz</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-lab" id="btn-lab">Laboratoire</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-res" id="btn-res">Ressources</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-notes" id="btn-notes">Notes</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-comments" id="btn-comments">Commentaires</button>
+    </nav>
+
+    <section class="tab-panel active" id="tab-cours" role="tabpanel" aria-labelledby="btn-cours">
+      <div class="placeholder">
+        <h3>📌 [Placeholders enseignants] Objectifs du cours</h3>
+        <p>Écris ici les objectifs pédagogiques du chapitre (compétences + prérequis).</p>
+      </div>
+      <div class="placeholder">
+        <h3>📘 [Placeholders enseignants] Leçon détaillée</h3>
+        <p>Ajoute les explications pas-à-pas, les formules, et des exemples corrigés.</p>
+      </div>
+      <div class="placeholder">
+        <h3>🧩 [Placeholders enseignants] Exercices guidés</h3>
+        <p>Insère 2 à 3 exercices progressifs avec indices.</p>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-quiz" role="tabpanel" aria-labelledby="btn-quiz">
+      <form id="quizForm">
+        <fieldset class="quiz-q">
+          <legend>1) SI للوحدة الدولية ديال الطاقة الكهربائية هو:</legend>
+          <label><input type="radio" name="q1" value="a"> Volt</label>
+          <label><input type="radio" name="q1" value="b"> Joule</label>
+          <label><input type="radio" name="q1" value="c"> Ohm</label>
+        </fieldset>
+
+        <fieldset class="quiz-q">
+          <legend>2) فـ RC، ثابت الزمن τ كيحسب غالبًا ب:</legend>
+          <label><input type="radio" name="q2" value="a"> τ = R × C</label>
+          <label><input type="radio" name="q2" value="b"> τ = R / C</label>
+          <label><input type="radio" name="q2" value="c"> τ = C / R</label>
+        </fieldset>
+
+        <fieldset class="quiz-q">
+          <legend>3) إذا تضاعف التردد f وسرعة الانتشار ثابتة، طول الموجة λ:</legend>
+          <label><input type="radio" name="q3" value="a"> يتضاعف</label>
+          <label><input type="radio" name="q3" value="b"> يبقى ثابت</label>
+          <label><input type="radio" name="q3" value="c"> ينقص للنصف</label>
+        </fieldset>
+
+        <button type="submit" class="btn">صحح الإجابات</button>
+      </form>
+      <p id="quizResult" aria-live="polite"></p>
+    </section>
+
+    <section class="tab-panel" id="tab-lab" role="tabpanel" aria-labelledby="btn-lab">
+      <div class="placeholder">
+        <h3>🔬 [Placeholders enseignants] سيناريو التجربة</h3>
+        <p>شرح قصير للتجربة، الخطوات، وأسئلة الملاحظة قبل تشغيل المحاكاة.</p>
+      </div>
+      <div class="lab-embed">[Three.js Simulation Embed Placeholder]</div>
+      <p class="hint">ملاحظة: ضع canvas أو iframe هنا عند ربط محاكاة Three.js الخاصة بالفصل.</p>
+    </section>
+
+    <section class="tab-panel" id="tab-res" role="tabpanel" aria-labelledby="btn-res">
+      <div class="placeholder">
+        <h3>📎 [Placeholders enseignants] Fiches & PDF</h3>
+        <p>أضف روابط الملخصات وملفات PDF هنا.</p>
+      </div>
+      <div class="placeholder">
+        <h3>🎥 [Placeholders enseignants] Vidéos recommandées</h3>
+        <p>أضف فيديوهات قصيرة موثوقة (YouTube/Drive) مع وصف واضح.</p>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-notes" role="tabpanel" aria-labelledby="btn-notes">
+      <label for="notesArea"><strong>✍️ Notes personnelles</strong></label>
+      <textarea id="notesArea" placeholder="كتب ملاحظاتك هنا... كيتحفظو تلقائياً فالجهاز ديالك"></textarea>
+      <div class="note-tools">
+        <button type="button" class="btn" id="saveNotesBtn">حفظ الملاحظات</button>
+        <button type="button" class="btn ghost" id="clearNotesBtn">مسح</button>
+        <span class="hint" id="notesStatus" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-comments" role="tabpanel" aria-labelledby="btn-comments">
+      <div class="comment-form">
+        <label for="commentInput"><strong>💬 Commentaires de la classe</strong></label>
+        <textarea id="commentInput" placeholder="كتب تعليقك أو سؤال ديالك..."></textarea>
+        <button type="button" class="btn" id="addCommentBtn">إضافة التعليق</button>
+      </div>
+      <ul class="comment-list" id="commentList"></ul>
+      <p class="hint">التعليقات كتتحفظ محلياً فـ localStorage (بدون backend).</p>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var tabButtons = Array.prototype.slice.call(document.querySelectorAll('.tab-btn'));
+      var tabPanels = Array.prototype.slice.call(document.querySelectorAll('.tab-panel'));
+
+      function activateTab(targetId) {
+        tabButtons.forEach(function (btn) {
+          var selected = btn.getAttribute('aria-controls') === targetId;
+          btn.setAttribute('aria-selected', selected ? 'true' : 'false');
+        });
+        tabPanels.forEach(function (panel) {
+          panel.classList.toggle('active', panel.id === targetId);
+        });
+      }
+
+      tabButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          activateTab(btn.getAttribute('aria-controls'));
+        });
+      });
+
+      var answers = { q1: 'b', q2: 'a', q3: 'c' };
+      var quizForm = document.getElementById('quizForm');
+      var quizResult = document.getElementById('quizResult');
+      quizForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        var score = 0;
+        Object.keys(answers).forEach(function (key) {
+          var choice = quizForm.querySelector('input[name="' + key + '"]:checked');
+          if (choice && choice.value === answers[key]) score += 1;
+        });
+        quizResult.textContent = 'النتيجة: ' + score + '/3';
+      });
+
+      var notesKey = 'nourix_lesson_template_notes';
+      var notesArea = document.getElementById('notesArea');
+      var notesStatus = document.getElementById('notesStatus');
+
+      function saveNotes(message) {
+        localStorage.setItem(notesKey, notesArea.value);
+        notesStatus.textContent = message;
+      }
+
+      notesArea.value = localStorage.getItem(notesKey) || '';
+      notesArea.addEventListener('input', function () {
+        saveNotes('تم الحفظ تلقائياً');
+      });
+      document.getElementById('saveNotesBtn').addEventListener('click', function () {
+        saveNotes('تم حفظ الملاحظات');
+      });
+      document.getElementById('clearNotesBtn').addEventListener('click', function () {
+        notesArea.value = '';
+        localStorage.removeItem(notesKey);
+        notesStatus.textContent = 'تم مسح الملاحظات';
+      });
+
+      var commentsKey = 'nourix_lesson_template_comments';
+      var commentInput = document.getElementById('commentInput');
+      var commentList = document.getElementById('commentList');
+      var addCommentBtn = document.getElementById('addCommentBtn');
+
+      function loadComments() {
+        try {
+          return JSON.parse(localStorage.getItem(commentsKey) || '[]');
+        } catch (e) {
+          return [];
+        }
+      }
+
+      function saveComments(comments) {
+        localStorage.setItem(commentsKey, JSON.stringify(comments));
+      }
+
+      function renderComments() {
+        var comments = loadComments();
+        commentList.innerHTML = '';
+        if (!comments.length) {
+          commentList.innerHTML = '<li class="comment-item"><div class="comment-meta">لا توجد تعليقات بعد.</div></li>';
+          return;
+        }
+
+        comments.forEach(function (comment, index) {
+          var item = document.createElement('li');
+          item.className = 'comment-item';
+
+          var meta = document.createElement('div');
+          meta.className = 'comment-meta';
+          meta.textContent = comment.date;
+
+          var body = document.createElement('div');
+          body.textContent = comment.text;
+
+          var removeBtn = document.createElement('button');
+          removeBtn.type = 'button';
+          removeBtn.className = 'btn ghost';
+          removeBtn.textContent = 'حذف';
+          removeBtn.addEventListener('click', function () {
+            var next = loadComments();
+            next.splice(index, 1);
+            saveComments(next);
+            renderComments();
+          });
+
+          item.appendChild(meta);
+          item.appendChild(body);
+          item.appendChild(removeBtn);
+          commentList.appendChild(item);
+        });
+      }
+
+      addCommentBtn.addEventListener('click', function () {
+        var text = commentInput.value.trim();
+        if (!text) return;
+        var comments = loadComments();
+        comments.unshift({ text: text, date: new Date().toLocaleString('ar-MA') });
+        saveComments(comments);
+        commentInput.value = '';
+        renderComments();
+      });
+
+      renderComments();
+    })();
+  </script>
+</body>
+</html>
